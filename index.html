@@ -813,6 +813,91 @@
         opacity: 0;
         pointer-events: none;
         }
+
+        /* Sección honorífica */
+        .honorary-section {
+            margin-top: 40px;
+            padding: 25px 20px;
+            border-top: 2px solid rgba(214, 197, 240, 0.3);
+            position: relative;
+        }
+
+        .honorary-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #D6C5F0;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(214, 197, 240, 0.4);
+            opacity: 0.9;
+        }
+
+        .honorary-item {
+            position: relative;
+            padding: 20px 25px;
+            margin: 0 auto;
+            max-width: 400px;
+            background: rgba(214, 197, 240, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(214, 197, 240, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(214, 197, 240, 0.1);
+        }
+
+        .honorary-item:hover {
+            background: rgba(214, 197, 240, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(214, 197, 240, 0.2);
+        }
+
+        .credit-name.honorary {
+            color: #D6C5F0;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(214, 197, 240, 0.5);
+        }
+
+        .credit-role.memorial {
+            color: #D6C5F0;
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(214, 197, 240, 0.4);
+            opacity: 0.9;
+        }
+
+        .memorial-symbol {
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: memorialGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes memorialGlow {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.1); }
+        }
+
+        /* Sección honorífica responsive */
+            .honorary-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .honorary-item {
+                padding: 15px 20px;
+                font-size: 1rem;
+                margin: 0 15px;
+            }
+
+            .memorial-symbol {
+                font-size: 1.2rem;
+                right: 15px;
+            }
     </style>
 </head>
 <body>
@@ -909,6 +994,15 @@
                     <li><span class="credit-name">bara</span> → <span class="credit-role">david</span></li>
                     <li><span class="credit-name">elRepa</span> → <span class="credit-role">sivo</span></li>
                 </ol>
+
+                <!-- Sección Honorífica -->
+                <div class="honorary-section">
+                    <h3 class="honorary-title">En Memoria</h3>
+                    <div class="honorary-item">
+                        <span class="credit-name honorary">nuntaku</span> → <span class="credit-role memorial">que en paz descanse</span>
+                        <div class="memorial-symbol">🕊️</div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
