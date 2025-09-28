@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz 1er Aniversario! - SunakitoVT</title>
+    <!-- Google Fonts: Fredoka para tipografía divertida y moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./media/sunaicon.jpg">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base - Bold Tech Dark con paleta #1B0044, #5727A3, #892CDC, #D6C5F0 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #1B0044 0%, #5727A3 50%, #892CDC 100%); /* Paleta: oscuro a medio y brillante */
+            position: relative;
+            overflow-x: hidden;
+            color: #FFFFFF;
+            min-height: 100vh;
+        }
+
+        /* Intro ASCII */
+        #intro {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        }
+
+        #intro pre {
+        font-family: monospace;
+        font-size: 12px;
+        line-height: 1;
+        white-space: pre;
+        text-align: center;
+        }
+
+        #intro.fade-out {
+        animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+        to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Pseudo-elemento para fondo tech (neón overlay simulando VTuber con paleta púrpura) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://via.placeholder.com/1920x1080/1B0044/5727A3?text=VTuber+Purple+Wallpaper'); /* Reemplaza con URL real; usa paleta */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+            filter: blur(3px);
+            box-shadow: inset 0 0 50px rgba(137, 44, 220, 0.15); /* Glow #892CDC sutil */
+        }
+
+        /* Contenedor principal para centrado y responsive */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container.visible {
+            opacity: 1;
+        }
+
+        /* Portada: Mensaje principal - Bold con neon cycling */
+        .portada {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .portada h1 {
+            font-size: 4rem; /* Más bold y grande */
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: neonCycle 4s infinite linear, glitch 2s infinite, bounce 2s infinite; /* Cycle + glitch + bounce */
+            letter-spacing: 3px; /* Espaciado bold tech */
+        }
+
+        /* Nota pequeña debajo del título */
+        .nota-pequena {
+            font-size: 2rem; /* La mitad del tamaño del título (4rem / 2 = 2rem) */
+            font-weight: 400;
+            color: #D6C5F0; /* Color claro de la paleta */
+            margin-top: 10px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-style: italic;
+            text-shadow: 0 0 5px rgba(214, 197, 240, 0.3);
+            animation: fadeInUp 1s ease-out 0.5s both; /* Aparece un poco después del título */
+        }
+
+        /* Animación neon cycle: ronda rojo, amarillo, azul, verde (contrasta con paleta oscura) */
+        @keyframes neonCycle {
+            0% { color: #FF0000; text-shadow: 0 0 20px #FF0000, 0 0 40px #FF0000; } /* Rojo */
+            25% { color: #FFFF00; text-shadow: 0 0 20px #FFFF00, 0 0 40px #FFFF00; } /* Amarillo */
+            50% { color: #0000FF; text-shadow: 0 0 20px #0000FF, 0 0 40px #0000FF; } /* Azul */
+            75% { color: #00FF00; text-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00; } /* Verde */
+            100% { color: #FF0000; text-shadow: 0 0 20px #FF0000, 0 0 40px #FF0000; } /* Vuelta a rojo */
+        }
+
+        /* Animación glitch para efecto tech */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        /* Animación para el texto: bounce para celebración */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Animación fadeInUp para entrada suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animación de flotación para imágenes decorativas */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animación de movimiento por toda la página */
+        @keyframes moveAround1 {
+            0% { transform: translate(-300px, 0px); }
+            25% { transform: translate(calc(100vw - 150px), 200px); }
+            50% { transform: translate(-200px, 400px); }
+            75% { transform: translate(calc(100vw - 100px), 150px); }
+            100% { transform: translate(-300px, 0px); }
+        }
+
+        @keyframes moveAround2 {
+            0% { transform: translate(calc(100vw + 100px), 100px); }
+            25% { transform: translate(-150px, 300px); }
+            50% { transform: translate(calc(100vw - 50px), 50px); }
+            75% { transform: translate(-250px, 350px); }
+            100% { transform: translate(calc(100vw + 100px), 100px); }
+        }
+
+        @keyframes moveAround3 {
+            0% { transform: translate(-200px, 500px); }
+            25% { transform: translate(calc(100vw - 200px), 250px); }
+            50% { transform: translate(-100px, 100px); }
+            75% { transform: translate(calc(100vw - 150px), 400px); }
+            100% { transform: translate(-200px, 500px); }
+        }
+
+        @keyframes moveAround4 {
+            0% { transform: translate(calc(100vw + 150px), 300px); }
+            25% { transform: translate(-180px, 150px); }
+            50% { transform: translate(calc(100vw - 100px), 450px); }
+            75% { transform: translate(-120px, 50px); }
+            100% { transform: translate(calc(100vw + 150px), 300px); }
+        }
+
+        @keyframes moveAround5 {
+            0% { transform: translate(-250px, 200px); }
+            25% { transform: translate(calc(100vw - 80px), 80px); }
+            50% { transform: translate(-150px, 350px); }
+            75% { transform: translate(calc(100vw - 120px), 250px); }
+            100% { transform: translate(-250px, 200px); }
+        }
+
+        @keyframes moveAround6 {
+            0% { transform: translate(calc(100vw + 200px), 400px); }
+            25% { transform: translate(-120px, 180px); }
+            50% { transform: translate(calc(100vw - 180px), 300px); }
+            75% { transform: translate(-180px, 120px); }
+            100% { transform: translate(calc(100vw + 200px), 400px); }
+        }
+
+        /* Imágenes decorativas flotantes alrededor - Con glow de paleta */
+        .decoracion-img {
+            position: fixed; /* Cambiado a fixed para que se muevan por toda la ventana */
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(137, 44, 220, 0.5); /* Glow #892CDC */
+            border: 2px solid rgba(87, 39, 163, 0.4); /* Borde #5727A3 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            opacity: 0.8;
+            z-index: -1; /* Por debajo de los videos */
+        }
+
+        /* Aplicar diferentes animaciones a cada imagen con velocidad aumentada */
+        .decoracion-img:nth-of-type(1) { 
+            top: 10%; left: 0%; 
+            animation: moveAround1 8s ease-in-out infinite; /* Más rápido: 15s -> 8s */
+        }
+        .decoracion-img:nth-of-type(2) { 
+            top: 15%; right: 0%; 
+            animation: moveAround2 10s ease-in-out infinite; /* Más rápido: 18s -> 10s */
+        }
+        .decoracion-img:nth-of-type(3) { 
+            bottom: 20%; left: 0%; 
+            animation: moveAround3 12s ease-in-out infinite; /* Más rápido: 20s -> 12s */
+        }
+        .decoracion-img:nth-of-type(4) { 
+            bottom: 15%; right: 0%; 
+            animation: moveAround4 9s ease-in-out infinite; /* Más rápido: 16s -> 9s */
+        }
+        .decoracion-img:nth-of-type(5) { 
+            top: 40%; left: 0%; 
+            animation: moveAround5 11s ease-in-out infinite; /* Más rápido: 22s -> 11s */
+        }
+        .decoracion-img:nth-of-type(6) { 
+            top: 35%; right: 0%; 
+            animation: moveAround6 7s ease-in-out infinite; /* Más rápido: 17s -> 7s */
+        }
+
+        .decoracion-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(137, 44, 220, 0.7), 0 0 40px rgba(214, 197, 240, 0.4); /* Glow #892CDC + #D6C5F0 */
+            opacity: 1;
+            z-index: 3; /* Al hacer hover, se eleva por encima de todo */
+            animation-play-state: paused; /* Pausar animación al hacer hover */
+        }
+
+        /* Secciones de videos: Glassmorphism con paleta oscura */
+        .video-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(27, 0, 68, 0.8); /* #1B0044 semi-transparente */
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(87, 39, 163, 0.25); /* Glow interno #5727A3 */
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(137, 44, 220, 0.3); /* Borde #892CDC */
+        }
+
+        .video-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(137, 44, 220, 0.35), inset 0 0 30px rgba(137, 44, 220, 0.35);
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem; /* Más bold */
+            font-weight: 700;
+            color: #892CDC; /* #892CDC brillante */
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #892CDC;
+            letter-spacing: 1px;
+        }
+
+        /* Estilos para iframe (para videos de comunidad y YT - horizontal) */
+        .video-section iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            border: 2px solid rgba(137, 44, 220, 0.4); /* Borde #892CDC */
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Contenedor para videos con overlay */
+        .video-container {
+            position: relative;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            border: 2px solid rgba(137, 44, 220, 0.4);
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Estilos para video nativo HTML5 (para Bananero - tamaño Short vertical) */
+        .video-section video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 9/16;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            background: #000;
+            border: 2px solid rgba(137, 44, 220, 0.4); /* Borde #892CDC */
+        }
+
+        .particle {
+            position: absolute;
+            top: -10px; /* Empieza arriba de la pantalla */
+            width: 8px;
+            height: 8px;
+            background: #fff; /* nieve blanca */
+            border-radius: 50%;
+            opacity: 0.9;
+            box-shadow: 0 0 10px rgba(255,255,255,0.6); /* brillito */
+            animation: snowFall linear infinite;
+        }
+
+        /* Animación de la nieve cayendo */
+        @keyframes snowFall {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--drift, 0px));
+                opacity: 0.6;
+            }
+        }
+
+
+        /* Efecto de partículas neón con paleta */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Footer minimalista - Con acentos de paleta */
+        footer {
+            margin-top: auto;
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(27, 0, 68, 0.9); /* #1B0044 oscuro */
+            width: 100%;
+            animation: fadeInUp 1s ease-out 1s both;
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(137, 44, 220, 0.3); /* #892CDC */
+            box-shadow: 0 -5px 20px rgba(87, 39, 163, 0.15); /* #5727A3 */
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(87, 39, 163, 0.3); /* #5727A3 sutil */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            color: #D6C5F0; /* #D6C5F0 claro para icons */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(137, 44, 220, 0.4); /* Glow #892CDC */
+        }
+
+        .social-icons a:hover {
+            background: #892CDC; /* #892CDC full */
+            color: #FFFFFF;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px #892CDC;
+        }
+
+        /* Responsive: Ajustes para móviles */
+        @media (max-width: 768px) {
+            .portada h1 {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            /* Nota pequeña en móvil */
+            .nota-pequena {
+                font-size: 1.25rem; /* La mitad del título móvil (2.5rem / 2 = 1.25rem) */
+            }
+
+            /* Imágenes en móvil: más pequeñas, movimiento reducido */
+            .decoracion-img {
+                width: 100px;
+                opacity: 0.7;
+            }
+
+            /* Reducir el rango de movimiento en móviles con velocidad aumentada */
+            @keyframes moveAround1 {
+                0% { transform: translate(-150px, 0px); }
+                25% { transform: translate(calc(100vw - 100px), 75px); }
+                50% { transform: translate(-100px, 150px); }
+                75% { transform: translate(calc(100vw - 80px), 50px); }
+                100% { transform: translate(-150px, 0px); }
+            }
+
+            @keyframes moveAround2 {
+                0% { transform: translate(calc(100vw + 50px), 50px); }
+                25% { transform: translate(-80px, 120px); }
+                50% { transform: translate(calc(100vw - 60px), 30px); }
+                75% { transform: translate(-100px, 140px); }
+                100% { transform: translate(calc(100vw + 50px), 50px); }
+            }
+
+            @keyframes moveAround3 {
+                0% { transform: translate(-100px, 200px); }
+                25% { transform: translate(calc(100vw - 120px), 100px); }
+                50% { transform: translate(-60px, 50px); }
+                75% { transform: translate(calc(100vw - 100px), 180px); }
+                100% { transform: translate(-100px, 200px); }
+            }
+
+            @keyframes moveAround4 {
+                0% { transform: translate(calc(100vw + 80px), 120px); }
+                25% { transform: translate(-100px, 60px); }
+                50% { transform: translate(calc(100vw - 80px), 200px); }
+                75% { transform: translate(-60px, 30px); }
+                100% { transform: translate(calc(100vw + 80px), 120px); }
+            }
+
+            /* Velocidades aumentadas para móvil también */
+            .decoracion-img:nth-of-type(1) { animation: moveAround1 5s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(2) { animation: moveAround2 6s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(3) { animation: moveAround3 7s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(4) { animation: moveAround4 5.5s ease-in-out infinite; }
+
+            /* Ocultar algunas imágenes extras en móvil para evitar saturación */
+            .decoracion-img:nth-of-type(5),
+            .decoracion-img:nth-of-type(6) {
+                display: none;
+            }
+
+            .video-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .video-section iframe {
+                height: 250px;
+            }
+
+            .video-container iframe {
+                height: 250px;
+            }
+
+            .video-section video {
+                max-width: 100%;
+                aspect-ratio: 9/16;
+            }
+
+            .social-icons {
+                gap: 15px;
+            }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Transiciones suaves entre secciones */
+        .video-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .video-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Posiciones específicas alrededor de la página - ahora manejadas por las animaciones */
+
+
+        .ascii-art {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.05);
+            white-space: pre;
+            z-index: 0;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(87, 39, 163, 0.8);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 0 15px rgba(137, 44, 220, 0.6);
+            transition: transform 0.2s ease, background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #892CDC;
+        }
+
+        .music-btn.playing {
+            background: rgba(137, 44, 220, 0.9);
+            animation: musicPulse 2s infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(137, 44, 220, 0.6); }
+            50% { box-shadow: 0 0 25px rgba(137, 44, 220, 0.8), 0 0 35px rgba(214, 197, 240, 0.4); }
+        }
+
+        /* Contenedor con proporción 9:16 */
+        .short-container {
+        position: relative;
+        width: 300px;          /* ancho fijo (puedes cambiarlo o poner % en responsive) */
+        aspect-ratio: 9 / 16;  /* asegura la proporción vertical */
+        margin: 20px auto;     /* centrado */
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .short-container iframe {
+        width: 100%;
+        height: 100%;
+        }
+
+        /* Overlay negro al inicio */
+        .overlay {
+        position: absolute;
+        inset: 0;             /* top:0, right:0, bottom:0, left:0 */
+        background: black;
+        z-index: 2;
+        transition: opacity 1s ease;
+        }
+        .overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Efecto de partículas simple (generado con JS vanilla) -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Imágenes decorativas flotantes alrededor (con glow de paleta) -->
+    <img src="https://pbs.twimg.com/media/GzP3vDHWQAAPJ9I?format=jpg&name=large" class="decoracion-img" loading="lazy">
+    <img src="https://pbs.twimg.com/media/Gvd2D_DXAAAoe1q?format=jpg&name=large"  class="decoracion-img" loading="lazy">
+    <img src="https://pbs.twimg.com/media/GtiHcNyXEAASLyn?format=jpg&name=large" class="decoracion-img" loading="lazy">
+    <img src="./media/sunapokemon.png" class="decoracion-img" loading="lazy">
+    <img src="./media/sunadrilo.png" class="decoracion-img" loading="lazy">
+    <img src="./media/sunadrilo2.jpeg" class="decoracion-img" loading="lazy">
+
+    <!-- Audio de fondo -->
+    <audio id="background-music" loop>
+        <source src="./media/sunacancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Botón de control de música -->
+    <button id="music-btn" class="music-btn" title="Pausar/Reproducir música">
+        <i class="fas fa-pause" id="music-icon"></i>
+    </button>
+
+
+    <div class="container">
+        <!-- Portada -->
+        <section class="portada">
+            <h1>🎉 ¡Feliz 2do Aniversario! 🎉</h1>
+            <p class="nota-pequena">Porque el primero se olvidó pipipi 😢</p>
+        </section>
+
+        <!-- Video de la comunidad (iframe YouTube con branding minimizado) -->
+        <section class="video-section">
+            <h2>Sorpresa sorpresita</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_T-tD7G6npw" allowfullscreen></iframe> <!-- Reemplaza VIDEO_ID_COMUNIDAD con el ID real de YouTube -->
+                <!-- Overlay negro para el primer video -->
+                <div class="overlay" id="overlay-comunidad"></div>
+            </div>
+        </section>
+
+        <!-- Video especial del Bananero (video nativo HTML5 - tamaño Short vertical) -->
+        <section class="video-section">
+        <h2>Saludito especial... para alguien especial</h2>
+        <!-- Aquí puedes seguir usando el iframe del Short también, si quieres destacarlo -->
+        <div class="short-container">
+            <iframe
+                src="https://www.youtube.com/embed/jIIsUGbItDY"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        <!-- Overlay negro -->
+        <div class="overlay" id="overlay"></div>
+</div>
+  </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.twitch.tv/sunakitovt" target="_blank" title="Twitch">
+                <i class="fab fa-twitch"></i>
+            </a>
+            <a href="https://kick.com/sunakitoVT" target="_blank" title="Kick">
+                <i class="fab fa-kickstarter"></i>
+            </a>
+            <a href="https://www.instagram.com/sunakito.vt/" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            <a href="https://twitter.com/SunakitoVT" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/@SunakitoVT" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@sunavt" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+    // ❄️ Crear nieve
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const numParticles = 50; // cantidad de copos
+
+        for (let i = 0; i < numParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // posición horizontal aleatoria
+            particle.style.left = Math.random() * 100 + '%';
+
+            // duración y delay distintos
+            const duration = Math.random() * 5 + 5; // 5–10s
+            const delay = Math.random() * 5;
+            const drift = (Math.random() * 100 - 50) + "px";
+
+            particle.style.setProperty('--drift', drift);
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = delay + 's';
+
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // 🎵 Control de música de fondo
+    const backgroundMusic = document.getElementById('background-music');
+    const musicBtn = document.getElementById('music-btn');
+    const musicIcon = document.getElementById('music-icon');
+    let isPlaying = false;
+
+    // Intentar reproducir la música automáticamente al cargar la página
+    window.onload = () => {
+        // Generar nieve
+        createParticles();
+        
+        // Intentar reproducir música automáticamente
+        backgroundMusic.play().then(() => {
+            isPlaying = true;
+            musicBtn.classList.add('playing');
+            musicIcon.className = 'fas fa-pause';
+        }).catch(error => {
+            // Si falla la reproducción automática (políticas del navegador)
+            console.log('Reproducción automática bloqueada:', error);
+            isPlaying = false;
+            musicBtn.classList.remove('playing');
+            musicIcon.className = 'fas fa-play';
+        });
+    };
+
+    // Control del botón de música
+    musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            backgroundMusic.pause();
+            isPlaying = false;
+            musicBtn.classList.remove('playing');
+            musicIcon.className = 'fas fa-play';
+        } else {
+            backgroundMusic.play().then(() => {
+                isPlaying = true;
+                musicBtn.classList.add('playing');
+                musicIcon.className = 'fas fa-pause';
+            }).catch(error => {
+                console.log('Error al reproducir:', error);
+            });
+        }
+    });
+
+    // Overlays de videos
+    document.getElementById('overlay').addEventListener('click', () => {
+        document.getElementById('overlay').classList.add('hidden');
+    });
+
+    // Overlay para el video de la comunidad
+    document.getElementById('overlay-comunidad').addEventListener('click', () => {
+        document.getElementById('overlay-comunidad').classList.add('hidden');
+    });
+</script>
+</body>
+</html>
