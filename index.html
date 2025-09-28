@@ -544,6 +544,24 @@
                 line-height: 40px;
                 font-size: 1.2rem;
             }
+
+            /* Sección honorífica responsive */
+            .honorary-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .honorary-item {
+                width: 100%;
+                max-width: 90%;
+                padding: 15px 20px;
+                font-size: 1rem;
+                margin: 0 auto;
+            }
+
+            .memorial-symbol {
+                font-size: 1.2rem;
+            }
         }
 
         /* Transiciones suaves entre secciones */
@@ -820,6 +838,9 @@
             padding: 25px 20px;
             border-top: 2px solid rgba(214, 197, 240, 0.3);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .honorary-title {
@@ -834,9 +855,9 @@
 
         .honorary-item {
             position: relative;
-            padding: 20px 25px;
+            padding: 25px 35px;
             margin: 0 auto;
-            max-width: 400px;
+            width: 500px;
             background: rgba(214, 197, 240, 0.08);
             border-radius: 15px;
             border: 1px solid rgba(214, 197, 240, 0.2);
@@ -881,23 +902,6 @@
             0% { opacity: 0.5; transform: scale(1); }
             100% { opacity: 0.9; transform: scale(1.1); }
         }
-
-        /* Sección honorífica responsive */
-            .honorary-title {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-
-            .honorary-item {
-                padding: 15px 20px;
-                font-size: 1rem;
-                margin: 0 15px;
-            }
-
-            .memorial-symbol {
-                font-size: 1.2rem;
-                right: 15px;
-            }
     </style>
 </head>
 <body>
@@ -938,7 +942,7 @@
         <section class="video-section">
             <h2>Sorpresa sorpresita</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/_T-tD7G6npw" allowfullscreen></iframe> <!-- Reemplaza VIDEO_ID_COMUNIDAD con el ID real de YouTube -->
+                <iframe src="https://www.youtube.com/embed/sy_EVjwgdxw" allowfullscreen></iframe> <!-- Reemplaza VIDEO_ID_COMUNIDAD con el ID real de YouTube -->
                 <!-- Overlay negro para el primer video -->
                 <div class="overlay" id="overlay-comunidad"></div>
             </div>
