@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz 1er Aniversario! - SunakitoVT</title>
+    <title>¡Feliz 2do Aniversario! - SunakitoVT</title>
     <!-- Google Fonts: Fredoka para tipografía divertida y moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./media/sunaicon.jpg">
@@ -26,32 +26,35 @@
             min-height: 100vh;
         }
 
-        /* Intro ASCII */
+        /* Intro con imagen poto.jpg */
         #intro {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #1B0044 url('./media/poto.jpg') center center / cover no-repeat; /* Fondo morado de respaldo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 2s ease-out;
         }
 
-        #intro pre {
-        font-family: monospace;
-        font-size: 12px;
-        line-height: 1;
-        white-space: pre;
-        text-align: center;
+        /* Overlay morado sutil sobre la imagen para integrar con la paleta */
+        #intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 0, 68, 0.2); /* Overlay morado muy sutil */
+            z-index: 1;
         }
 
         #intro.fade-out {
-        animation: fadeOut 2s forwards;
-        }
-
-        @keyframes fadeOut {
-        to { opacity: 0; visibility: hidden; }
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* Pseudo-elemento para fondo tech (neón overlay simulando VTuber con paleta púrpura) */
@@ -235,30 +238,30 @@
             z-index: -1; /* Por debajo de los videos */
         }
 
-        /* Aplicar diferentes animaciones a cada imagen con velocidad aumentada */
+        /* Aplicar diferentes animaciones a cada imagen con velocidad reducida */
         .decoracion-img:nth-of-type(1) { 
             top: 10%; left: 0%; 
-            animation: moveAround1 8s ease-in-out infinite; /* Más rápido: 15s -> 8s */
+            animation: moveAround1 20s ease-in-out infinite; /* Velocidad reducida: 8s -> 20s */
         }
         .decoracion-img:nth-of-type(2) { 
             top: 15%; right: 0%; 
-            animation: moveAround2 10s ease-in-out infinite; /* Más rápido: 18s -> 10s */
+            animation: moveAround2 25s ease-in-out infinite; /* Velocidad reducida: 10s -> 25s */
         }
         .decoracion-img:nth-of-type(3) { 
             bottom: 20%; left: 0%; 
-            animation: moveAround3 12s ease-in-out infinite; /* Más rápido: 20s -> 12s */
+            animation: moveAround3 30s ease-in-out infinite; /* Velocidad reducida: 12s -> 30s */
         }
         .decoracion-img:nth-of-type(4) { 
             bottom: 15%; right: 0%; 
-            animation: moveAround4 9s ease-in-out infinite; /* Más rápido: 16s -> 9s */
+            animation: moveAround4 22s ease-in-out infinite; /* Velocidad reducida: 9s -> 22s */
         }
         .decoracion-img:nth-of-type(5) { 
             top: 40%; left: 0%; 
-            animation: moveAround5 11s ease-in-out infinite; /* Más rápido: 22s -> 11s */
+            animation: moveAround5 28s ease-in-out infinite; /* Velocidad reducida: 11s -> 28s */
         }
         .decoracion-img:nth-of-type(6) { 
             top: 35%; right: 0%; 
-            animation: moveAround6 7s ease-in-out infinite; /* Más rápido: 17s -> 7s */
+            animation: moveAround6 18s ease-in-out infinite; /* Velocidad reducida: 7s -> 18s */
         }
 
         .decoracion-img:hover {
@@ -469,11 +472,11 @@
                 100% { transform: translate(calc(100vw + 80px), 120px); }
             }
 
-            /* Velocidades aumentadas para móvil también */
-            .decoracion-img:nth-of-type(1) { animation: moveAround1 5s ease-in-out infinite; }
-            .decoracion-img:nth-of-type(2) { animation: moveAround2 6s ease-in-out infinite; }
-            .decoracion-img:nth-of-type(3) { animation: moveAround3 7s ease-in-out infinite; }
-            .decoracion-img:nth-of-type(4) { animation: moveAround4 5.5s ease-in-out infinite; }
+            /* Velocidades reducidas para móvil también */
+            .decoracion-img:nth-of-type(1) { animation: moveAround1 15s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(2) { animation: moveAround2 18s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(3) { animation: moveAround3 20s ease-in-out infinite; }
+            .decoracion-img:nth-of-type(4) { animation: moveAround4 16s ease-in-out infinite; }
 
             /* Ocultar algunas imágenes extras en móvil para evitar saturación */
             .decoracion-img:nth-of-type(5),
@@ -496,6 +499,39 @@
             .video-section video {
                 max-width: 100%;
                 aspect-ratio: 9/16;
+            }
+
+            /* Imagen final responsive */
+            .image-container img {
+                max-width: 100%;
+            }
+
+            .download-btn {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            /* Créditos responsive */
+            .credits-list li {
+                font-size: 1rem;
+                padding: 12px 15px 12px 50px;
+                margin-bottom: 10px;
+            }
+
+            .credits-list li::before {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+                left: 12px;
+            }
+
+            /* Mensaje personal responsive */
+            .personal-message {
+                font-size: 1.1rem;
+                padding: 20px 15px;
+                margin: 0 10px;
             }
 
             .social-icons {
@@ -591,6 +627,167 @@
         height: 100%;
         }
 
+        /* Contenedor de imagen final */
+        .image-container {
+            position: relative;
+            display: block;
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(137, 44, 220, 0.5);
+            border: 2px solid rgba(137, 44, 220, 0.4);
+            width: fit-content;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* Botón de descarga */
+        .download-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(137, 44, 220, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(137, 44, 220, 0.6);
+            z-index: 3;
+        }
+
+        .download-btn:hover {
+            background: #5727A3;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(137, 44, 220, 0.8);
+        }
+
+        /* Sección de créditos */
+        .credits-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .credits-list {
+            list-style: none;
+            counter-reset: credit-counter;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .credits-list li {
+            counter-increment: credit-counter;
+            position: relative;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(87, 39, 163, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(137, 44, 220, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .credits-list li::before {
+            content: counter(credit-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #892CDC;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(137, 44, 220, 0.5);
+        }
+
+        .credits-list li:hover {
+            background: rgba(137, 44, 220, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(137, 44, 220, 0.4);
+        }
+
+        .credit-name {
+            font-weight: 700;
+            color: #D6C5F0;
+            text-shadow: 0 0 5px rgba(214, 197, 240, 0.3);
+        }
+
+        .credit-role {
+            font-weight: 600;
+            color: #892CDC;
+            text-shadow: 0 0 5px rgba(137, 44, 220, 0.3);
+        }
+
+        /* Mensaje personal */
+        .message-container {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .personal-message {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #D6C5F0;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 25px;
+            background: rgba(87, 39, 163, 0.15);
+            border-radius: 15px;
+            border: 1px solid rgba(137, 44, 220, 0.25);
+            box-shadow: 0 0 20px rgba(137, 44, 220, 0.2);
+            position: relative;
+            overflow: hidden;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(214, 197, 240, 0.3);
+            animation: messageGlow 3s ease-in-out infinite alternate;
+        }
+
+        .personal-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(137, 44, 220, 0.1), transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes messageGlow {
+            0% { box-shadow: 0 0 20px rgba(137, 44, 220, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(137, 44, 220, 0.4), 0 0 40px rgba(214, 197, 240, 0.2); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
         /* Overlay negro al inicio */
         .overlay {
         position: absolute;
@@ -598,7 +795,20 @@
         background: black;
         z-index: 2;
         transition: opacity 1s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2rem;
         }
+
+        .overlay:before {
+            content: '▶️ Haz clic para revelar';
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
         .overlay.hidden {
         opacity: 0;
         pointer-events: none;
@@ -606,6 +816,9 @@
     </style>
 </head>
 <body>
+    <!-- Intro con imagen poto.jpg -->
+    <div id="intro"></div>
+
     <!-- Efecto de partículas simple (generado con JS vanilla) -->
     <div class="particles" id="particles"></div>
 
@@ -661,6 +874,43 @@
         <div class="overlay" id="overlay"></div>
 </div>
   </section>
+
+        <!-- Imagen final - Identidad revelada -->
+        <section class="video-section">
+            <h2>Ganaste, te devuelvo tu identidad</h2>
+            <div style="text-align: center;">
+                <div class="image-container">
+                    <img src="./media/sunamclovin.png" id="final-image" alt="Identidad revelada" loading="lazy">
+                    <a href="./media/sunamclovin.png" download="sunamclovin.png" class="download-btn">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                    <!-- Overlay negro para la imagen final -->
+                    <div class="overlay" id="overlay-final"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Mensaje Personal -->
+        <section class="video-section">
+            <div class="message-container">
+                <p class="personal-message">
+                    Ya pero suna sunita una preguntita. Te gustó? si? no? ok me llega al huev... ok no bromita. Espero te haya gustado el presente 💜
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección de Créditos -->
+        <section class="video-section">
+            <h2>Créditos</h2>
+            <div class="credits-container">
+                <ol class="credits-list">
+                    <li><span class="credit-name">run run</span> → <span class="credit-role">padrastro</span></li>
+                    <li><span class="credit-name">david</span> → <span class="credit-role">bara</span></li>
+                    <li><span class="credit-name">bara</span> → <span class="credit-role">david</span></li>
+                    <li><span class="credit-name">elRepa</span> → <span class="credit-role">sivo</span></li>
+                </ol>
+            </div>
+        </section>
     </div>
 
     <!-- Footer -->
@@ -687,6 +937,32 @@
     </footer>
 
     <script>
+    // 🎬 Control de intro con imagen poto.jpg
+    document.addEventListener('DOMContentLoaded', function() {
+        const intro = document.getElementById('intro');
+        
+        // Verificar si la intro ya se mostró en esta sesión
+        const introShown = sessionStorage.getItem('introShown');
+        
+        if (introShown === 'true') {
+            // Si ya se mostró, ocultar inmediatamente la intro
+            intro.style.display = 'none';
+        } else {
+            // Si es la primera vez, mostrar la intro normalmente
+            sessionStorage.setItem('introShown', 'true');
+            
+            // Después de 3 segundos, iniciar la transición de salida (2 segundos)
+            setTimeout(() => {
+                intro.classList.add('fade-out');
+            }, 4000);
+            
+            // Después de 5 segundos total (3s + 2s transición), ocultar completamente
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 8000);
+        }
+    });
+
     // ❄️ Crear nieve
     function createParticles() {
         const particlesContainer = document.getElementById('particles');
@@ -717,41 +993,107 @@
     const musicBtn = document.getElementById('music-btn');
     const musicIcon = document.getElementById('music-icon');
     let isPlaying = false;
+    let userInteracted = false; // Flag para saber si el usuario ya interactuó
+
+    // Función para sincronizar el estado visual con el estado real del audio
+    function syncMusicState() {
+        const isCurrentlyPlaying = !backgroundMusic.paused && !backgroundMusic.ended;
+        isPlaying = isCurrentlyPlaying;
+        
+        if (isCurrentlyPlaying) {
+            musicBtn.classList.add('playing');
+            musicIcon.className = 'fas fa-pause';
+        } else {
+            musicBtn.classList.remove('playing');
+            musicIcon.className = 'fas fa-play';
+        }
+    }
+
+    // Función para intentar reproducir la música
+    function playMusic() {
+        const playPromise = backgroundMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log('Música reproduciéndose');
+                syncMusicState();
+            }).catch(error => {
+                console.log('Reproducción automática bloqueada:', error);
+                // Si falla, asegurar que el botón muestre play
+                isPlaying = false;
+                musicBtn.classList.remove('playing');
+                musicIcon.className = 'fas fa-play';
+            });
+        }
+    }
 
     // Intentar reproducir la música automáticamente al cargar la página
     window.onload = () => {
         // Generar nieve
         createParticles();
         
-        // Intentar reproducir música automáticamente
-        backgroundMusic.play().then(() => {
-            isPlaying = true;
-            musicBtn.classList.add('playing');
-            musicIcon.className = 'fas fa-pause';
-        }).catch(error => {
-            // Si falla la reproducción automática (políticas del navegador)
-            console.log('Reproducción automática bloqueada:', error);
-            isPlaying = false;
-            musicBtn.classList.remove('playing');
-            musicIcon.className = 'fas fa-play';
-        });
+        // Inicializar estado del botón como pausado (porque autoplay usualmente falla)
+        isPlaying = false;
+        musicBtn.classList.remove('playing');
+        musicIcon.className = 'fas fa-play';
+        
+        // Intentar reproducir música automáticamente (probablemente fallará)
+        setTimeout(() => {
+            playMusic();
+        }, 500); // Pequeño delay para que todo esté cargado
     };
 
-    // Control del botón de música
-    musicBtn.addEventListener('click', () => {
+    // Actualizar estado cuando la música termina o se pausa realmente
+    backgroundMusic.addEventListener('ended', () => {
+        backgroundMusic.currentTime = 0;
         if (isPlaying) {
-            backgroundMusic.pause();
-            isPlaying = false;
-            musicBtn.classList.remove('playing');
-            musicIcon.className = 'fas fa-play';
-        } else {
+            backgroundMusic.play();
+        }
+    });
+
+    // Sincronizar estado visual con el audio real
+    backgroundMusic.addEventListener('play', () => {
+        isPlaying = true;
+        musicBtn.classList.add('playing');
+        musicIcon.className = 'fas fa-pause';
+    });
+
+    backgroundMusic.addEventListener('pause', () => {
+        // Solo actualizar si no es una pausa automática que vamos a reanudar
+        setTimeout(() => {
+            if (backgroundMusic.paused) {
+                isPlaying = false;
+                musicBtn.classList.remove('playing');
+                musicIcon.className = 'fas fa-play';
+            }
+        }, 100);
+    });
+
+    // Control del botón de música - Más directo y robusto
+    musicBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        userInteracted = true; // Marcar que el usuario ya interactuó
+        
+        if (backgroundMusic.paused) {
+            // Si está pausado, reproducir
             backgroundMusic.play().then(() => {
                 isPlaying = true;
                 musicBtn.classList.add('playing');
                 musicIcon.className = 'fas fa-pause';
+                console.log('Música iniciada por clic del usuario');
             }).catch(error => {
                 console.log('Error al reproducir:', error);
+                isPlaying = false;
+                musicBtn.classList.remove('playing');
+                musicIcon.className = 'fas fa-play';
             });
+        } else {
+            // Si está reproduciéndose, pausar
+            backgroundMusic.pause();
+            isPlaying = false;
+            musicBtn.classList.remove('playing');
+            musicIcon.className = 'fas fa-play';
+            console.log('Música pausada por clic del usuario');
         }
     });
 
@@ -763,6 +1105,11 @@
     // Overlay para el video de la comunidad
     document.getElementById('overlay-comunidad').addEventListener('click', () => {
         document.getElementById('overlay-comunidad').classList.add('hidden');
+    });
+
+    // Overlay para la imagen final
+    document.getElementById('overlay-final').addEventListener('click', () => {
+        document.getElementById('overlay-final').classList.add('hidden');
     });
 </script>
 </body>
