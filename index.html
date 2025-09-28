@@ -527,6 +527,12 @@
                 left: 12px;
             }
 
+            .credit-icon {
+                width: 28px;
+                height: 28px;
+                margin-right: 8px;
+            }
+
             /* Mensaje personal responsive */
             .personal-message {
                 font-size: 1.1rem;
@@ -557,6 +563,12 @@
                 padding: 15px 20px;
                 font-size: 1rem;
                 margin: 0 auto;
+            }
+
+            .honorary-icon {
+                width: 28px;
+                height: 28px;
+                margin-right: 8px;
             }
 
             .memorial-symbol {
@@ -709,7 +721,7 @@
         .credits-list li {
             counter-increment: credit-counter;
             position: relative;
-            padding: 15px 20px;
+            padding: 15px 20px 15px 60px;
             margin-bottom: 15px;
             background: rgba(87, 39, 163, 0.2);
             border-radius: 12px;
@@ -718,7 +730,7 @@
             font-size: 1.2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
         }
 
@@ -739,6 +751,23 @@
             font-weight: 700;
             font-size: 0.9rem;
             box-shadow: 0 0 10px rgba(137, 44, 220, 0.5);
+        }
+
+        .credit-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid rgba(137, 44, 220, 0.4);
+            box-shadow: 0 0 10px rgba(137, 44, 220, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .credit-icon:hover {
+            border-color: #892CDC;
+            box-shadow: 0 0 15px rgba(137, 44, 220, 0.6);
+            transform: scale(1.1);
         }
 
         .credits-list li:hover {
@@ -865,9 +894,28 @@
             font-size: 1.1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
             box-shadow: 0 0 15px rgba(214, 197, 240, 0.1);
+        }
+
+        .honorary-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid rgba(214, 197, 240, 0.4);
+            box-shadow: 0 0 10px rgba(214, 197, 240, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            filter: grayscale(30%);
+        }
+
+        .honorary-icon:hover {
+            border-color: #D6C5F0;
+            box-shadow: 0 0 15px rgba(214, 197, 240, 0.6);
+            transform: scale(1.1);
+            filter: grayscale(0%);
         }
 
         .honorary-item:hover {
@@ -993,17 +1041,17 @@
             <h2>Créditos</h2>
             <div class="credits-container">
                 <ol class="credits-list">
-                    <li><span class="credit-name">run run</span> → <span class="credit-role">padrastro</span></li>
-                    <li><span class="credit-name">david</span> → <span class="credit-role">bara</span></li>
-                    <li><span class="credit-name">bara</span> → <span class="credit-role">david</span></li>
-                    <li><span class="credit-name">elRepa</span> → <span class="credit-role">sivo</span></li>
+                    <li><img src="./media/runrun.jpg" alt="run run" class="credit-icon"><span class="credit-name">run run</span> → <span class="credit-role">padrastro</span></li>
+                    <li><img src="./media/david.jpg" alt="david" class="credit-icon"><span class="credit-name">david</span> → <span class="credit-role">bara</span></li>
+                    <li><img src="./media/bara.jpg" alt="bara" class="credit-icon"><span class="credit-name">bara</span> → <span class="credit-role">david</span></li>
+                    <li><img src="./media/repa.jpg" alt="elRepa" class="credit-icon"><span class="credit-name">elRepa</span> → <span class="credit-role">sivo</span></li>
                 </ol>
 
                 <!-- Sección Honorífica -->
                 <div class="honorary-section">
                     <h3 class="honorary-title">En Memoria</h3>
                     <div class="honorary-item">
-                        <span class="credit-name honorary">nuntaku</span> → <span class="credit-role memorial">que en paz descanse</span>
+                        <img src="./media/nuntaku.jpg" alt="nuntaku" class="honorary-icon"><span class="credit-name honorary">nuntaku</span> → <span class="credit-role memorial">que en paz descanse</span>
                         <div class="memorial-symbol">🕊️</div>
                     </div>
                 </div>
